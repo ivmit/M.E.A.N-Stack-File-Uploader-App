@@ -13,6 +13,10 @@ var app = angular.module('superheroApp', ['ngRoute', 'angular-filepicker'])
             templateUrl: 'partials/gallery.html',
             controller: 'galleryController'
         })
+        .when('/detail/:id', {
+            templateUrl: 'partials/detail.html',
+            controller: 'detailController'
+        })
         .otherwise({redirectTo: '/addSuperhero'});
 
         filepickerProvider.setKey('ApNlGi3SRSqSU2zTnRgP6z');
