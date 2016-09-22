@@ -30,10 +30,8 @@ module.exports = function() {
             //save it
             newSuperHero.save(function(err){
                 if(err) res.send(err);
-
                 //send it back to client
                 res.json(req.body);
-
             });
 
         },

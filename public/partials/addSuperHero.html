@@ -1,0 +1,62 @@
+<div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title text-center">
+                <span class="glyphicon glyphicon-user"></span> Superhero from
+            </h2>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <form name="addForm" novalidate>
+            <div class="form-group">
+                <label for="username">Name</label>
+                <input name="username" type="text" class="form-control" placeholder="Deadpool?" ng-model="superhero.name" required>
+            </div>
+
+            <label  class="radio control-label">Gender</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" value="Male" ng-model="superhero.gender" > Male
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" value="Female" ng-model="superhero.gender" > Female
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="superPowers">Super Powers</label>
+                <input type="text" name="superPowers" class="form-control" placeholder="SenseOfHumor" ng-model="superhero.superPowers" required>
+            </div>
+            <div class="form-group">
+                <label for="picture">Main picture</label>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default" ng-click="upload()"> Upload <span class="caret"></span> </button>
+                    <div class="custom-thumbnail">
+                        <a href="{{superhero.picture.url}}" class="thumbnail" ng-if="superhero.picture">
+                            <img ng-src="{{superhero.picture.url | fpConvert: {filter: 'sharpen'} }}" alt="{{superhero.name + ' picture'}}">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="picture">More pictures? (Max 3, optional!)</label>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default" ng-click="upload">Upload <span class="caret"></span></button>
+                    <div class="custom-thumbnail" ng-repeat="picture in superhero.morePictures">
+                        <div class="col-md-{{12 / superhero.morePictures.length}}">
+                            <a href="{{picture.url}}" class="thumbnail">
+                                <img ng-src="{{picture.url | fpConvert : {filter: 'sharpen'} }}" alt="{{superhero.name}}">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <button type="submit" class="btn btn-danger btn-block"  ng-click="createSuperhero()" ng-disabled="superhero.$invalid || !superhero.picture">Submit</button>
+        </form>
+    </div>
+
+
+</div>
